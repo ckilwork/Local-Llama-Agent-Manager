@@ -1,8 +1,12 @@
 # Local Llama Agent Manager
 
+中文 | [English](#english)
+
+## 中文
+
 一个用于 Windows 的本地 `llama.cpp` / `llama-server` 图形管理器。它负责保存启动配置、启动和停止服务器、查看日志与生成速度，并提供浏览器地址和 OpenAI 兼容 API Base URL 的一键复制。
 
-## 功能
+### 功能
 
 - 中文 / English 界面，保存多个服务器配置模板
 - 设置模型、可选 `mmproj`、可选 MTP 草稿模型，以及上下文长度、GPU 层数等启动参数
@@ -10,13 +14,13 @@
 - 保存、选择、删除本地系统提示词方案
 - 查看启动命令预览和运行日志
 
-> 本项目不包含 `llama-server.exe` 或任何模型文件。MTP 等选项是否可用，取决于所使用的 `llama-server` 版本和模型。
+### 下载与使用
 
-## 下载 Windows x64 版
+从 [Releases 下载最新 Windows x64 ZIP](https://github.com/ckilwork/Local-Llama-Agent-Manager/releases/latest)。完整解压后运行 `Local-Llama-Agent-Manager.exe`；不要只提取 EXE，程序需要同目录下的 `_internal` 文件夹。首次启动时选择本机的 `llama-server.exe` 和模型文件。
 
-从 [Releases 下载最新 ZIP](https://github.com/ckilwork/Local-Llama-Agent-Manager/releases/latest)。完整解压后运行 `Local-Llama-Agent-Manager.exe`；不要只提取 EXE，程序需要同目录下的 `_internal` 文件夹。首次启动时选择本机的 `llama-server.exe` 和模型文件。
+本项目不包含 `llama-server.exe` 或任何模型文件。MTP 等选项是否可用，取决于所使用的 `llama-server` 版本和模型。个人配置保存在 `%LOCALAPPDATA%\LlamaCppLauncher\presets.json`，不在本仓库中。
 
-## 从源码运行
+### 从源码运行
 
 在 Windows 上安装 Python 3.13，然后在本目录执行：
 
@@ -25,9 +29,7 @@ python -m pip install -r requirements.txt
 python main.py
 ```
 
-首次启动时选择本机的 `llama-server.exe` 和模型文件。个人配置保存在 `%LOCALAPPDATA%\LlamaCppLauncher\presets.json`，不在本仓库中。
-
-## 测试与打包
+### 测试与打包
 
 ```powershell
 python -m pip install -r requirements-dev.txt
@@ -37,6 +39,51 @@ python -m PyInstaller --noconfirm --clean Local-Llama-Agent-Manager.spec
 
 打包输出位于 `dist\Local-Llama-Agent-Manager`。构建配置会排除与 Qt 冲突的第三方 ICU DLL。打包后可运行 `Local-Llama-Agent-Manager.exe --self-test` 检查 Qt 启动依赖；成功时退出码为 0。
 
-## 许可证
+### AI 制作声明
+
+本项目的代码和文档主要由 AI 根据用户需求生成与修改，并经过自动化测试。AI 生成内容仍可能存在缺陷；使用、修改或分发前请自行审查。
+
+## English
+
+Local Llama Agent Manager is a Windows GUI for running a local `llama.cpp` / `llama-server` instance. It saves launch presets, starts and stops the server, displays logs and generation speed, and provides one-click copying of the browser URL and OpenAI-compatible API base URL.
+
+### Features
+
+- Chinese and English UI with multiple server presets
+- Model selection, optional `mmproj` and MTP draft model, context length, GPU layers, and other launch options
+- Readiness based on `/health` and an estimated live generation speed from `/slots`
+- Local system-prompt schemes that can be saved, selected, and deleted
+- Launch-command preview and live server logs
+
+### Download and use
+
+Download the latest Windows x64 ZIP from [Releases](https://github.com/ckilwork/Local-Llama-Agent-Manager/releases/latest). Extract the entire archive, then run `Local-Llama-Agent-Manager.exe`. Do not extract the EXE alone: it needs the adjacent `_internal` directory. On first launch, select your local `llama-server.exe` and model files.
+
+Neither `llama-server.exe` nor model files are included. Availability of options such as MTP depends on your `llama-server` version and model. Personal settings are stored at `%LOCALAPPDATA%\LlamaCppLauncher\presets.json`, outside this repository.
+
+### Run from source
+
+Install Python 3.13 on Windows, then run:
+
+```powershell
+python -m pip install -r requirements.txt
+python main.py
+```
+
+### Test and build
+
+```powershell
+python -m pip install -r requirements-dev.txt
+python -m pytest -q tests
+python -m PyInstaller --noconfirm --clean Local-Llama-Agent-Manager.spec
+```
+
+The build is written to `dist\Local-Llama-Agent-Manager`. The spec excludes a third-party ICU DLL that conflicts with Qt. After building, run `Local-Llama-Agent-Manager.exe --self-test`; an exit code of 0 means the Qt startup check passed.
+
+### AI disclosure
+
+The code and documentation in this project were primarily created and revised with AI based on user requirements, then checked with automated tests. AI-generated work may still contain defects; review it before using, modifying, or redistributing it.
+
+## License / 许可证
 
 [MIT](LICENSE)
