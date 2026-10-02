@@ -12,6 +12,10 @@
 
 > 本项目不包含 `llama-server.exe` 或任何模型文件。MTP 等选项是否可用，取决于所使用的 `llama-server` 版本和模型。
 
+## 下载 Windows x64 版
+
+从 [Releases 下载最新 ZIP](https://github.com/ckilwork/Local-Llama-Agent-Manager/releases/latest)。完整解压后运行 `Local-Llama-Agent-Manager.exe`；不要只提取 EXE，程序需要同目录下的 `_internal` 文件夹。首次启动时选择本机的 `llama-server.exe` 和模型文件。
+
 ## 从源码运行
 
 在 Windows 上安装 Python 3.13，然后在本目录执行：
